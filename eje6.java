@@ -16,16 +16,24 @@ public class eje6 {
         
         while(true) 
         {
-            System.out.println("Ingrese el tipo de ejes de su vehiculo (Motos 1 eje, autos2, camiones 3 o mas son de carga): ");
-            int vehiculo = scaner.nextInt();
-            if (vehiculo >0 && vehiculo <15)
+            try
             {
-                System.out.println("los "+vehiculo+" ejes son correctos ");
-                return vehiculo;
+                System.out.println("Ingrese el tipo de ejes de su vehiculo (Motos 1 eje, autos2, camiones 3 o mas son de carga): ");
+                int vehiculo = scaner.nextInt();
+                if (vehiculo >0 && vehiculo <15)
+                {
+                    System.out.println("los "+vehiculo+" ejes son correctos ");
+                    return vehiculo;
+                }
+                else
+                {
+                    System.out.println("no hay camiones con "+vehiculo+" ejes ");
+                }
             }
-            else
+            catch(Exception e)
             {
-                System.out.println("no hay camiones con "+vehiculo+" ejes ");
+                //System.out.println("unknow");
+                return 0;
             }
 
         }
@@ -34,7 +42,11 @@ public class eje6 {
         Scanner MyScan = new Scanner(System.in);
         int cuota, ejes;
         ejes = validarOpciones(MyScan);
-        if(ejes == 1)
+        if(ejes ==0){
+            System.out.println("EXCEPTION! la entrada fue invalida, vuelve a ejecutar");
+            
+        }
+        else if(ejes == 1)
         {
             cuota = 20;
             System.out.println("Debes pagar "+cuota +"$");
